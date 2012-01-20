@@ -18,6 +18,9 @@ end
 
 gem 'jquery-rails'
 
+gem 'haml'
+gem 'haml-rails', :group => :development
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
