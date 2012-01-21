@@ -34,8 +34,10 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem "capybara"
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails'
 end
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.6"
+  gem "rspec-rails", '~> 2.6'
 end
