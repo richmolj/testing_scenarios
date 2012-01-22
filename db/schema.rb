@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122180457) do
+ActiveRecord::Schema.define(:version => 20120122182058) do
 
   create_table "posts", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120122180457) do
     t.string   "setting"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "value"
   end
 
 end
