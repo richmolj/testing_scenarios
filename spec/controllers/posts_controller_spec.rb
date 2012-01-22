@@ -105,15 +105,35 @@ describe PostsController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested post" do
+    before do
+      @post = mock_post
       Post.stub(:find).with("37") { mock_post }
-      mock_post.should_receive(:destroy)
-      delete :destroy, :id => "37"
+    end
+
+    context "when the post can be destroyed" do
+      before do
+        @post.should_receive(:can_be_destroyed?) { true }
+      end
+
+      it "destroys the requested post" do
+        @post.should_receive(:destroy)
+        delete :destroy, :id => "37"
+      end
+    end
+
+    context "when the post is not destroyable" do
+      before do
+        @post.should_receive(:can_be_destroyed?) { false }
+      end
+
+      it "should not destroy the post" do
+        mock_post.should_not_receive(:destroy)
+        delete :destroy, :id => "37"
+      end
     end
 
     it "redirects to the posts list" do
-      Post.stub(:find) { mock_post }
-      delete :destroy, :id => "1"
+      delete :destroy, :id => "37"
       response.should redirect_to(posts_url)
     end
   end

@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121015836) do
+ActiveRecord::Schema.define(:version => 20120122180457) do
 
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "destroyable"
+  end
+
+  create_table "site_configuration_options", :force => true do |t|
+    t.string   "setting"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

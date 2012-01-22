@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    @post.destroy if @post.can_be_destroyed?
 
     redirect_to posts_url
   end
